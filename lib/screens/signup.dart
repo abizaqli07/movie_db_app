@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_db_app/components/auth/auth_button.dart';
 import 'package:movie_db_app/components/auth/auth_textfield.dart';
-import 'package:movie_db_app/components/auth/square_tile.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -75,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // logo
                 const Icon(
                   Icons.lock,
-                  size: 50,
+                  size: 100,
                 ),
 
                 const SizedBox(height: 50),
@@ -119,48 +118,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 AuthButton(
                   text: "Sign Up",
                   onTap: signUserUp,
-                ),
-
-                const SizedBox(height: 50),
-
-                // or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          'Or continue with',
-                          style: TextStyle(color: Colors.grey[700]),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 50),
-
-                // google + apple sign in buttons
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SquareTile(imagePath: 'assets/icons/google.png'),
-                    SizedBox(width: 25),
-                    SquareTile(imagePath: 'assets/icons/apple.png')
-                  ],
                 ),
 
                 const SizedBox(height: 50),

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_db_app/components/auth/auth_button.dart';
 import 'package:movie_db_app/components/auth/auth_textfield.dart';
-import 'package:movie_db_app/components/auth/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -44,7 +43,9 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
+
       Navigator.pop(context);
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Navigator.pop(context);
@@ -52,6 +53,8 @@ class _LoginPageState extends State<LoginPage> {
       } else if (e.code == 'wrong-password') {
         Navigator.pop(context);
         showErrorMessage("Password Incorrect");
+      } else {
+        
       }
     }
   }
@@ -123,48 +126,6 @@ class _LoginPageState extends State<LoginPage> {
                 AuthButton(
                   text: "Sign In",
                   onTap: signUserIn,
-                ),
-
-                const SizedBox(height: 50),
-
-                // or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          'Or continue with',
-                          style: TextStyle(color: Colors.grey[700]),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 50),
-
-                // google + apple sign in buttons
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SquareTile(imagePath: 'assets/icons/google.png'),
-                    SizedBox(width: 25),
-                    SquareTile(imagePath: 'assets/icons/apple.png')
-                  ],
                 ),
 
                 const SizedBox(height: 50),

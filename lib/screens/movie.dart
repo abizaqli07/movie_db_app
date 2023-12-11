@@ -18,14 +18,10 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
-        ],
-      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            pinned: true,
             title: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -49,12 +45,16 @@ class MoviePage extends StatelessWidget {
                 ),
                 icon: const Icon(Icons.search),
               ),
+              IconButton(
+                onPressed: signUserOut,
+                icon: const Icon(Icons.logout),
+              ),
             ],
             floating: true,
             snap: true,
-            centerTitle: true,
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
+            
           ),
           _WidgetTitle(
             title: 'Discover Movies',
